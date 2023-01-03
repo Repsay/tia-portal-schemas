@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<links xmlns="http://titanium.dstc.edu.au/xml/xs3p">
+    <schema file-location="./document.xsd" docfile-location="./document.xsd.html"/>
+    <schema file-location="./documentinfo.xsd" docfile-location="./documentinfo.xsd.html"/>
+    <schema file-location="./enums.xsd" docfile-location="./enums.xsd.html"/>
+    <schema file-location="./fb.xsd" docfile-location="./fb.xsd.html"/>
+    <schema file-location="./fbattribute.xsd" docfile-location="./fbattribute.xsd.html"/>
+    <schema file-location="./fbinterface.xsd" docfile-location="./fbinterface.xsd.html"/>
+    <schema file-location="./fbinterfacesection.xsd" docfile-location="./fbinterfacesection.xsd.html"/>
+    <schema file-location="./fbinterfacesectionmember.xsd" docfile-location="./fbinterfacesectionmember.xsd.html"/>
+    <schema file-location="./fbinterfacesectionmembercomment.xsd" docfile-location="./fbinterfacesectionmembercomment.xsd.html"/>
+    <schema file-location="./fbinterfacesections.xsd" docfile-location="./fbinterfacesections.xsd.html"/>
+    <schema file-location="./fbobject.xsd" docfile-location="./fbobject.xsd.html"/>
+    <schema file-location="./fbobjectcompileunit.xsd" docfile-location="./fbobjectcompileunit.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitattribute.xsd" docfile-location="./fbobjectcompileunitattribute.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnet.xsd" docfile-location="./fbobjectcompileunitflgnet.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetlabels.xsd" docfile-location="./fbobjectcompileunitflgnetlabels.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetparts.xsd" docfile-location="./fbobjectcompileunitflgnetparts.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetpartsaccess.xsd" docfile-location="./fbobjectcompileunitflgnetpartsaccess.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetpartsaccessconstant.xsd" docfile-location="./fbobjectcompileunitflgnetpartsaccessconstant.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetpartscall.xsd" docfile-location="./fbobjectcompileunitflgnetpartscall.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetpartscallinfo.xsd" docfile-location="./fbobjectcompileunitflgnetpartscallinfo.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetpartscomment.xsd" docfile-location="./fbobjectcompileunitflgnetpartscomment.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetpartscommon.xsd" docfile-location="./fbobjectcompileunitflgnetpartscommon.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetpartspart.xsd" docfile-location="./fbobjectcompileunitflgnetpartspart.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitnetworksource.xsd" docfile-location="./fbobjectcompileunitnetworksource.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitobject.xsd" docfile-location="./fbobjectcompileunitobject.xsd.html"/>
+    <schema file-location="./fbobjectmultilingual.xsd" docfile-location="./fbobjectmultilingual.xsd.html"/>
+    <schema file-location="./fbobjectmultilingualtext.xsd" docfile-location="./fbobjectmultilingualtext.xsd.html"/>
+    <schema file-location="./fbobjectmultilingualtextattribute.xsd" docfile-location="./fbobjectmultilingualtextattribute.xsd.html"/>
+    <schema file-location="./fbobjectmultilingualtextitem.xsd" docfile-location="./fbobjectmultilingualtextitem.xsd.html"/>
+    <schema file-location="./installedproducts.xsd" docfile-location="./installedproducts.xsd.html"/>
+    <schema file-location="./patterns.xsd" docfile-location="./patterns.xsd.html"/>
+
+</links>

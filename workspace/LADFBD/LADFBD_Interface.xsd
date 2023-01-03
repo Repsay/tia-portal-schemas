@@ -1,0 +1,118 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3" targetNamespace="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+
+    <xs:complexType name="FB_Interface_T">
+        <xs:sequence>
+            <xs:element name="Sections" type="Sections_T"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Simple Type Definitions -->
+
+    <xs:simpleType name="Section_TE">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Input"/>
+            <xs:enumeration value="Output"/>
+            <xs:enumeration value="InOut"/>
+            <xs:enumeration value="Static"/>
+            <xs:enumeration value="Temp"/>
+            <xs:enumeration value="Constant"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Remanence_TE">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SetInIDB"/>
+            <xs:enumeration value="NonRetain"/>
+            <xs:enumeration value="Retain"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Accessibility_TE">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Public"/>
+            <xs:enumeration value="Internal"/>
+            <xs:enumeration value="Protected"/>
+            <xs:enumeration value="Private"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Complex Types Definition -->
+
+    <xs:complexType name="Sections_T">
+        <xs:sequence>
+            <xs:element name="Section" type="Section_T" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Section represents a single parameter or local data of a program block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Section_T">
+        <xs:sequence>
+            <xs:element name="Member" type="Member_T" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Member represents a single parameter or local data of a program block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="Section_TE" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Member_T">
+        <xs:annotation>
+            <xs:documentation>Member represents the tags or constants used in the program block. Depending of the datatype of a tag, members can be nested or have further structural sub elements. In case of the data type "ARRAY" the structural element "Subelement Path" represents e. g. the index of the components of an array element. Only those members are exported, which were edited by the user.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <!-- <xs:element name="AttributeList" type="MemberAttributeList_T" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The AttributeList includes all defined attributes of a member. Attributes, that aresystem defined or assigned by a standard value are not listed in the XML structure. The member attributes ReadOnly and Informative are only written to the XML export file if their value is TRUE.</xs:documentation>
+                </xs:annotation>
+            </xs:element> -->
+
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Member" type="Member_T"/>
+                <xs:element name="Sections" type="Sections_T"/>
+                <xs:element name="StartValue" type="xs:anySimpleType"/>
+                <xs:element name="Comment" type="Comment_T"/>
+                <!-- <xs:element name="Subelement" type="Subelement_T"/> -->
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string" use="required"/>
+        <xs:attribute name="Datatype" type="xs:string" use="required"/>
+        <xs:attribute name="Version" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>The version of the library type to use.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Remanence" type="Remanence_TE" default="NonRetain"/>
+        <xs:attribute name="Accessibility" type="Accessibility_TE" default="Public"/>
+        <xs:attribute name="Informative" type="xs:boolean" default="false"/>
+    </xs:complexType>
+
+    <xs:complexType name="Comment_T">
+        <xs:annotation>
+            <xs:documentation>Comment represents a comment of a member.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="MultiLanguageText" type="MultiLanguageText_T" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>The text of the comment.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MultiLanguageText_T">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Lang" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+
+
+
+</xs:schema>

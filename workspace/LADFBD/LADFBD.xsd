@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified"
+    xmlns:int="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns:flg="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
+    <xs:annotation>
+        <xs:documentation>Schema for a function block in the LAD or FBD language.</xs:documentation>
+    </xs:annotation>
+
+    <xs:import namespace="http://www.siemens.com/automation/Openness/SW/Interface/v3" schemaLocation="./LADFBD_Interface.xsd"/>
+    <xs:import namespace="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3" schemaLocation="./LADFBD_FLGNET.xsd"/>
+
+
+
+    <!-- Start of the document -->
+
+    <xs:element name="Document" type="Document_T">
+        <xs:annotation>
+            <xs:documentation>Root element of a function block in the LAD or FBD language.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+
+    <!-- Simple Type definitions -->
+
+    <xs:simpleType name="Engineering_Version">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="V15"/>
+            <xs:enumeration value="V15.1"/>
+            <xs:enumeration value="V16"/>
+            <xs:enumeration value="V17"/>
+            <xs:enumeration value="V18"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ExportSettings_TE">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="None"/>
+            <xs:enumeration value="WithDefaults"/>
+            <xs:enumeration value="WithReadOnly"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="MemoryLayout_TE">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Optimized"/>
+            <xs:enumeration value="Standard"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ProgrammingLanguages">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LAD"/>
+            <xs:enumeration value="FBD"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <!-- Complex Type definitions -->
+    <xs:complexType name="Document_T">
+        <xs:annotation>
+            <xs:documentation>Type of the root element of a function block in the LAD or FBD language.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Engineering" type="Engineering_T" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Declares the version of the TIA Portal used to generate this file.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocumentInfo" type="DocumentInfo_T" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contains information about the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SW.Blocks.FB" type="FB_Block_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contains the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Engineering_T">
+        <xs:annotation>
+            <xs:documentation>Type of the element that declares the version of the TIA Portal used to generate this file.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="version" type="Engineering_Version" use="required">
+            <xs:annotation>
+                <xs:documentation>Version of the schema.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="DocumentInfo_T">
+        <xs:annotation>
+            <xs:documentation>Type of the element that contains information about the function block.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Created" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Time when the function block was created.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ExportSetting" type="ExportSettings_TE" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contains information about the export settings of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="InstalledProducts" type="InstalledProducts_T" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contains information about the installed products.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <xs:complexType name="InstalledProducts_T">
+        <xs:annotation>
+            <xs:documentation>Type of the element that contains information about the installed products.</xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="Product" type="NameVersion_T" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Contains information about a product.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OptionPackage" type="NameVersion_T" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Contains information about an optional package.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="NameVersion_T">
+        <xs:annotation>
+            <xs:documentation>Type of the element that contains information about a element.</xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="DisplayName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Name of the element.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DisplayVersion" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Version of the element.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="FB_Block_T">
+        <xs:annotation>
+            <xs:documentation>Type of the element that contains the function block.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="AttributeList" type="FB_AttributeList_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contains the attributes of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ObjectList" type="FB_ObjectList_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contains the objects of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:int" use="required">
+            <xs:annotation>
+                <xs:documentation>Unique identifier of the function block.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="FB_AttributeList_T">
+        <xs:annotation>
+            <xs:documentation>Type of the element that contains the attributes of the function block.</xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="AutoNumber" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block is an auto-numbered function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CodeModifiedDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Time when the function block was last modified.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CompileDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Time when the function block was compiled.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CreationDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Time when the function block was created.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HeaderAuthor" type="xs:string" minOccurs="0" maxOccurs="1" default="">
+                <xs:annotation>
+                    <xs:documentation>Author of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HeaderFamily" type="xs:string" minOccurs="0" maxOccurs="1" default="">
+                <xs:annotation>
+                    <xs:documentation>Family of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HeaderName" type="xs:string" minOccurs="0" maxOccurs="1" default="">
+                <xs:annotation>
+                    <xs:documentation>Name of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HeaderVersion" type="xs:string" minOccurs="0" maxOccurs="1" default="0.1">
+                <xs:annotation>
+                    <xs:documentation>Version of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Interface" type="int:FB_Interface_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contains the interface of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="InterfaceModifiedDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Time when the interface of the function block was last modified.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsConsistent" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block is consistent.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsKnowHowProtected" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block is know-how protected.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsWriteProtected" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block is write protected.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MemoryLayout" type="MemoryLayout_TE" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contains the memory layout of the function block.</xs:documentation>
+                </xs:annotation>
+
+            </xs:element>
+            <xs:element name="ModifiedDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Time when the function block was last modified.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Name of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Number" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Number of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ParameterModified" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Time when the parameters of the function block were last modified.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PLCSimAdvancedSupport" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block supports advanced simulation in PLC Sim.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProgrammingLanguage" type="ProgrammingLanguages" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Programming language of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SecondaryType" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Secondary type of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StructureModified" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Time when the structure of the function block was last modified.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AssignedProDiagFB" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ProDiag function block assigned to the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ISMultiInstanceCapable" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block is multi-instance capable.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Supervisions" type="xs:string" minOccurs="0" maxOccurs="1" default="no supervisions">
+                <xs:annotation>
+                    <xs:documentation>Supervisions of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsIECCheckEnabled" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block is IECCheck enabled.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsRetainMemResEnabled" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block is retain memory resource enabled.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MemoryReserve" type="xs:int" minOccurs="0" maxOccurs="1" default="0">
+                <xs:annotation>
+                    <xs:documentation>Memory reserve of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RetainMemoryReserve" type="xs:int" minOccurs="0" maxOccurs="1" default="0">
+                <xs:annotation>
+                    <xs:documentation>Retain memory reserve of the function block. If the "IsRetainMemResEnabled" attribute's value is "false", and the "RetainMemoryReserve" attribute is not equal to "0", an exception is thrown.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DownloadWithoutReinit" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block can be downloaded without reinitialization.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LibraryType" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Library type of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LibraryTypeVersionGuid" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Library type version GUID of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ParameterPassing" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block supports parameter passing.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="UDABlockProperties" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>UDABlockProperties of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="UDAEnableTagReadback" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block supports UDAEnableTagReadback.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HandleErrorsWithinBlock" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block supports HandleErrorsWithinBlock.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LibraryConformanceStatus" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Library conformance status of the function block.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SetENOAutomatically" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether the function block supports SetENOAutomatically.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="FB_ObjectList_T">
+        <xs:annotation>
+            <xs:documentation>Function block object list.</xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="MultilingualText" type="MultilingualText_Block_T" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                    <xs:documentation>Function block object list.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SW.Blocks.CompileUnit" type="SW_BLocks_CompileUnit_T" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Function block object list.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="MultilingualText_Block_T">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ObjectList" type="Multilingual_ObjectList_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The title or comment of the functionblock</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>The ID of the network block</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CompositionName">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Title"/>
+                    <xs:enumeration value="Comment"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Multilingual_ObjectList_T">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="MultilingualTextItem" type="MultilingualTextItem_T" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>The title or comment of the functionblock</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MultilingualTextItem_T">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="AttributeList" type="TextItem_AttributeList_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The title or comment of the functionblock</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>The ID of the element block</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CompositionName">
+            <xs:annotation>
+                <xs:documentation>The name of the element block</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Items"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+
+    </xs:complexType>
+
+    <xs:complexType name="TextItem_AttributeList_T">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+        <xs:choice minOccurs="2" maxOccurs="2">
+            <xs:element name="Culture" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The title or comment of the functionblock</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Text" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The title or comment of the functionblock</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="SW_BLocks_CompileUnit_T">
+        <xs:annotation>
+            <xs:documentation>A Network of the Function Block</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="AttributeList" type="CompileUnit_AttributeList_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A Network of the Function Block</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ObjectList" type="CompileUnit_ObjectList_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A Network of the Function Block</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>The ID of the network block</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CompositionName">
+            <xs:annotation>
+                <xs:documentation>The name of the network block</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="CompileUnits"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="CompileUnit_ObjectList_T">
+        <xs:annotation>
+            <xs:documentation>A Network of the Function Block</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="MultilingualText" type="MultilingualText_Block_T" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                    <xs:documentation>A Network of the Function Block</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CompileUnit_AttributeList_T">
+        <xs:annotation>
+            <xs:documentation>A Network of the Function Block</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="NetworkSource" type="NetworkSource_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A Network of the Function Block</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProgrammingLanguage" type="ProgrammingLanguages" maxOccurs="1" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Programming language of the network</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="NetworkSource_T">
+        <xs:annotation>
+            <xs:documentation>A Network of the Function Block</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FlgNet" type="flg:FB_FlgNet_T" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
