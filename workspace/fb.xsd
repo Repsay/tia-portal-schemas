@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+
+    <xs:include schemaLocation="./fbattribute.xsd"/>
+    <xs:include schemaLocation="./fbobject.xsd"/>
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a function block.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType name="AttributeListFB_T">
+        <xs:annotation>
+            <xs:documentation>
+            Type of the element that contains the attributes of the function block.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element ref="AutoNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CodeModifiedDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CompileDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CreationDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderAuthor" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderFamily" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderName" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderVersion" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="Interface" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="InterfaceModifiedDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="IsConsistent" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="IsKnowHowProtected" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="IsWriteProtected" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="MemoryLayout" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ModifiedDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Name" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Number" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ParameterModified" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="PLCSimAdvancedSupport" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ProgrammingLanguage" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="SecondaryType" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="StructureModified" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="AssignedProDiagFB" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ISMultiInstanceCapable" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Supervisions" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="IsIECCheckEnabled" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="IsRetainMemResEnabled" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="MemoryReserve" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="RetainMemoryReserve" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="DownloadWithoutReinit" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="LibraryType" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="LibraryTypeVersionGuid" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ParameterPassing" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="UDABlockProperties" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="UDAEnableTagReadback" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HandleErrorsWithinBlock" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="LibraryConformanceStatus" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="SetENOAutomatically" minOccurs="0" maxOccurs="1"/>
+        </xs:choice>
+
+    </xs:complexType>
+
+    <xs:complexType name="ObjectListFB_T">
+        <xs:annotation>
+            <xs:documentation>
+                Function block object list.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element ref="MultilingualText" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                    <xs:documentation>Function block object list.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="SW.Blocks.CompileUnit" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Function block object list.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+
+</xs:schema>

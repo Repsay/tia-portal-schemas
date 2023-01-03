@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+
+    <xs:include schemaLocation="./installedproducts.xsd"/>
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a function block in the LAD or FBD language.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="Created" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                Created represents the date and time when the function block was created.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ExportSetting" type="enums:ExportSetting">
+        <xs:annotation>
+            <xs:documentation>
+                Contains information about the export settings of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="InstalledProducts">
+        <xs:annotation>
+            <xs:documentation>
+                Contains information about the installed products.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:annotation>
+                <xs:documentation>
+                Type of the element that contains information about the installed products.
+                </xs:documentation>
+            </xs:annotation>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="Product" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="OptionPackage" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

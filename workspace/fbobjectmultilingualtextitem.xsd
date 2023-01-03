@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+
+    <xs:include schemaLocation="./fbobjectmultilingualtextattribute.xsd"/>
+
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a multilanguage text.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType name="AttributeListMultilingualTextItem_T">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+        <xs:choice minOccurs="2" maxOccurs="2">
+            <xs:element ref="Culture" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="Text" minOccurs="1" maxOccurs="1"/>
+        </xs:choice>
+    </xs:complexType>
+
+
+</xs:schema>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a section of a function block interface member comment.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="MultiLanguageText">
+        <xs:annotation>
+            <xs:documentation>
+                MultiLanguageText represents a text in a specific language.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Lang" type="xs:string" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

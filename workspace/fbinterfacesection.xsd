@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns:patterns="patterns"
+    xmlns:enums="enums">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns"/>
+
+    <xs:include schemaLocation="./fbinterface.xsd"/>
+    <xs:include schemaLocation="./fbinterfacesections.xsd"/>
+    <xs:include schemaLocation="./fbinterfacesectionmember.xsd"/>
+
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a section of a function block interface.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="Member">
+        <xs:annotation>
+            <xs:documentation>
+                Member represents the tags or constants used in the program block. Depending of the datatype of a tag, members can be nested or have further structural sub elements. In case of the data type "ARRAY" the structural element "Subelement Path" represents e. g. the index of the components of an array element. Only those members are exported, which were edited by the user.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AttributeList" type="AttributeListMember_T" minOccurs="0" maxOccurs="1"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="Member"/>
+                    <xs:element ref="Sections"/>
+                    <xs:element ref="StartValue"/>
+                    <xs:element ref="Comment"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required"/>
+            <xs:attribute name="Datatype" type="enums:SimaticType" use="required"/>
+            <xs:attribute name="Version" type="xs:string" use="optional">
+                <xs:annotation>
+                    <xs:documentation>The version of the library type to use.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Remanence" type="enums:Remanence" default="NonRetain"/>
+            <xs:attribute name="Accessibility" type="enums:Accessibility" default="Public"/>
+            <xs:attribute name="Informative" type="xs:boolean" default="false"/>
+
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

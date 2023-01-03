@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:flg = "http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+
+    <xs:import schemaLocation="./fbobjectcompileunitflgnet.xsd" namespace="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3" />
+
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a multilanguage text.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="FlgNet" type="flg:FlgNet_T"/>
+
+
+</xs:schema>

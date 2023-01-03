@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="patterns">
+
+    <xs:annotation>
+        <xs:documentation>
+            This schema defines all the paterns used in the XML schemas.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:simpleType name="GUID">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IndexPath">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="-?\d+(,-?\d+)*(;(-?\d+(,-?\d+)*))?"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="InterfaceFlags">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="None"/>
+            <xs:pattern value="((Mandatory|S7_Visible)(,\s*)?)*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Lang">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z]{2}-[a-zA-Z]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="SimaticName">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="None|((Periphery|QualityInformation)(,\s*)?)*"/>
+        </xs:restriction>
+        <!-- TODO: Find the correct pattern -->
+    </xs:simpleType>
+
+    <xs:simpleType name="SimpleAccessModifier">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="None|((Periphery|QualityInformation)(,\s*)?)*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="SliceAccessModifier">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([xbwdXBWD]\d+)|undef"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="VersionString">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+(.[0-9]+){0,3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+</xs:schema>

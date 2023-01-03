@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+
+    <xs:include schemaLocation="./fbobjectcompileunitattribute.xsd"/>
+    <xs:include schemaLocation="./fbobjectcompileunitobject.xsd"/>
+
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a multilanguage text.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType name="AttributeListCompileUnit_T">
+        <xs:annotation>
+            <xs:documentation>A Network of the Function Block</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="NetworkSource" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A Network of the Function Block</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="ProgrammingLanguage" maxOccurs="1" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Programming language of the network</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ObjectListCompileUnit_T">
+
+    </xs:complexType>
+
+
+</xs:schema>
