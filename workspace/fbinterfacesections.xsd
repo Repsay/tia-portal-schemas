@@ -2,11 +2,13 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siemens.com/automation/Openness/SW/Interface/v3"
     xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3"
     xmlns:enums="enums"
+    xmlns:common="common"
     xmlns:patterns="patterns">
 
     <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
     <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
 
+    <xs:include schemaLocation="./fbinterfacecommon.xsd"/>
     <xs:include schemaLocation="./fbinterfacesection.xsd"/>
 
     <xs:annotation>
@@ -36,7 +38,10 @@
     </xs:element>
 
     <xs:complexType name="AttributeListSections_T">
-
+        <xs:complexContent>
+            <xs:extension base="AttributeListInterface_T">
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
 
 

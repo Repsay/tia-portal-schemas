@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:enums="enums"
+    xmlns:flg="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3"
     xmlns:patterns="patterns">
 
     <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
     <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
 
-    <xs:include schemaLocation="./fbobjectcompileunitnetworksource.xsd" />
+    <xs:import schemaLocation="./fbobjectcompileunitnetworksource.xsd" namespace="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3" />
 
 
     <xs:annotation>
@@ -21,13 +22,9 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="FlgNet" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="flg:FlgNet" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
-    </xs:element>
-
-    <xs:element name="ProgrammingLanguage">
-
     </xs:element>
 
 

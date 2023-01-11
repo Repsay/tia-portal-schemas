@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:enums="enums"
+    xmlns:common="common"
     xmlns:patterns="patterns">
 
     <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
     <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+    <xs:include schemaLocation="./_common.xsd"/>
 
     <xs:include schemaLocation="./fbobjectcompileunitattribute.xsd"/>
     <xs:include schemaLocation="./fbobjectcompileunitobject.xsd"/>
+    <xs:include schemaLocation="./multilingualtext.xsd"/>
 
 
     <xs:annotation>
@@ -26,7 +29,7 @@
                     <xs:documentation>A Network of the Function Block</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element ref="ProgrammingLanguage" maxOccurs="1" minOccurs="1">
+            <xs:element name="ProgrammingLanguage" type="enums:ProgrammingLanguage" maxOccurs="1" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Programming language of the network</xs:documentation>
                 </xs:annotation>
@@ -35,7 +38,16 @@
     </xs:complexType>
 
     <xs:complexType name="ObjectListCompileUnit_T">
-
+        <xs:annotation>
+            <xs:documentation>A Network of the Function Block</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="MultilingualText" type="MultilingualText_T" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                    <xs:documentation>A Network of the Function Block</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
     </xs:complexType>
 
 

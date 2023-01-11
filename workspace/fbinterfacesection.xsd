@@ -28,12 +28,14 @@
             <xs:sequence>
                 <xs:element name="AttributeList" type="AttributeListMember_T" minOccurs="0" maxOccurs="1"/>
                 <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="AttributeList" type="AttributeListMember_T" minOccurs="0" maxOccurs="1"/>
                     <xs:element ref="Member"/>
                     <xs:element ref="Sections"/>
                     <xs:element ref="StartValue"/>
                     <xs:element ref="Comment"/>
                 </xs:choice>
             </xs:sequence>
+
             <xs:attribute name="Name" type="xs:string" use="required"/>
             <xs:attribute name="Datatype" type="enums:SimaticType" use="required"/>
             <xs:attribute name="Version" type="xs:string" use="optional">

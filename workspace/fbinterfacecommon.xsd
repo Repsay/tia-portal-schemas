@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a function block interface.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType name="AttributeListInterface_T">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="BooleanAttribute">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:boolean">
+                            <xs:attribute name="Name" type="xs:string" use="required"/>
+                            <xs:attribute name="Informative" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>Exported only with ReadOnly option, ignored during import.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="SystemDefined" type="xs:boolean" default="true">
+                                <xs:annotation>
+                                    <xs:documentation>An attribute of attribute, denotes if it is defined by a user or the system itself. In V14, if exists it is always true.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="UId" type="xs:int" use="optional"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="IntegerAttribute">
+                <xs:complexType>
+                    <xs:annotation>
+                        <xs:documentation>Not for LAD/FBD.</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:integer">
+                            <xs:attribute name="Name" type="xs:string" use="required"/>
+                            <xs:attribute name="Informative" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>Exported only with ReadOnly option, ignored during import.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="SystemDefined" type="xs:boolean" default="true">
+                                <xs:annotation>
+                                    <xs:documentation>An attribute of attribute, denotes if it is defined by a user or the system itself. In V14, if exists it is always true.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="UId" type="xs:int" use="optional"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RealAttribute">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:double">
+                            <xs:attribute name="Name" type="xs:string" use="required"/>
+                            <xs:attribute name="Informative" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>Exported only with ReadOnly option, ignored during import.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="SystemDefined" type="xs:boolean" default="true">
+                                <xs:annotation>
+                                    <xs:documentation>An attribute of attribute, denotes if it is defined by a user or the system itself. In V14, if exists it is always true.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="UId" type="xs:int" use="optional"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="StringAttribute">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Name" type="xs:string" use="required"/>
+                            <xs:attribute name="Informative" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>Exported only with ReadOnly option, ignored during import.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="SystemDefined" type="xs:boolean" default="true">
+                                <xs:annotation>
+                                    <xs:documentation>An attribute of attribute, denotes if it is defined by a user or the system itself. In V14, if exists it is always true.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="UId" type="xs:int" use="optional"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DateAttribute">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:dateTime">
+                            <xs:attribute name="Name" type="xs:string" use="required"/>
+                            <xs:attribute name="Informative" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>Exported only with ReadOnly option, ignored during import.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="SystemDefined" type="xs:boolean" default="true">
+                                <xs:annotation>
+                                    <xs:documentation>An attribute of attribute, denotes if it is defined by a user or the system itself. In V14, if exists it is always true.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="UId" type="xs:int" use="optional"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+</xs:schema>

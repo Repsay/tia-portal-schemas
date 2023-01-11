@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <links xmlns="http://titanium.dstc.edu.au/xml/xs3p">
+    <schema file-location="./_common.xsd" docfile-location="./_common.xsd.html"/>
     <schema file-location="./document.xsd" docfile-location="./document.xsd.html"/>
     <schema file-location="./documentinfo.xsd" docfile-location="./documentinfo.xsd.html"/>
     <schema file-location="./enums.xsd" docfile-location="./enums.xsd.html"/>
@@ -23,13 +24,12 @@
     <schema file-location="./fbobjectcompileunitflgnetpartscomment.xsd" docfile-location="./fbobjectcompileunitflgnetpartscomment.xsd.html"/>
     <schema file-location="./fbobjectcompileunitflgnetpartscommon.xsd" docfile-location="./fbobjectcompileunitflgnetpartscommon.xsd.html"/>
     <schema file-location="./fbobjectcompileunitflgnetpartspart.xsd" docfile-location="./fbobjectcompileunitflgnetpartspart.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetwires.xsd" docfile-location="./fbobjectcompileunitflgnetwires.xsd.html"/>
+    <schema file-location="./fbobjectcompileunitflgnetwireswire.xsd" docfile-location="./fbobjectcompileunitflgnetwireswire.xsd.html"/>
     <schema file-location="./fbobjectcompileunitnetworksource.xsd" docfile-location="./fbobjectcompileunitnetworksource.xsd.html"/>
     <schema file-location="./fbobjectcompileunitobject.xsd" docfile-location="./fbobjectcompileunitobject.xsd.html"/>
-    <schema file-location="./fbobjectmultilingual.xsd" docfile-location="./fbobjectmultilingual.xsd.html"/>
-    <schema file-location="./fbobjectmultilingualtext.xsd" docfile-location="./fbobjectmultilingualtext.xsd.html"/>
-    <schema file-location="./fbobjectmultilingualtextattribute.xsd" docfile-location="./fbobjectmultilingualtextattribute.xsd.html"/>
-    <schema file-location="./fbobjectmultilingualtextitem.xsd" docfile-location="./fbobjectmultilingualtextitem.xsd.html"/>
     <schema file-location="./installedproducts.xsd" docfile-location="./installedproducts.xsd.html"/>
+    <schema file-location="./multilingualtext.xsd" docfile-location="./multilingualtext.xsd.html"/>
     <schema file-location="./patterns.xsd" docfile-location="./patterns.xsd.html"/>
 
 </links>

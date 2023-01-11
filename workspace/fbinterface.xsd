@@ -28,7 +28,7 @@
                 </xs:documentation>
             </xs:annotation>
             <xs:sequence>
-                <xs:element name="AttributeList" type="AttributeListSections_T" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="AttributeList" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="Section" minOccurs="0" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>

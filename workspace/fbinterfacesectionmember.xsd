@@ -7,7 +7,7 @@
     <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
     <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
 
-
+    <xs:include schemaLocation="./fbinterfacecommon.xsd"/>
     <xs:include schemaLocation="./fbinterfacesectionmembercomment.xsd"/>
 
     <xs:annotation>
@@ -46,5 +46,12 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="AttributeListMember_T"></xs:complexType>
+    <xs:complexType name="AttributeListMember_T">
+        <xs:complexContent>
+            <xs:extension base="AttributeListInterface_T">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+
 </xs:schema>

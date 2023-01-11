@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+
+    <xs:annotation>
+        <xs:documentation>Schema for a function block in the LAD or FBD language.</xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType name="MultilingualText_T">
+        <xs:sequence>
+            <xs:element name="ObjectList" type="ObjectListMultilingualText_T" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The title or comment of the functionblock</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>The ID of the network block</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CompositionName">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Title"/>
+                    <xs:enumeration value="Comment"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="ObjectListMultilingualText_T">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="MultilingualTextItem" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>The title or comment of the functionblock</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="MultilingualTextItem">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AttributeList" type="AttributeListMultilingualTextItem_T" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>The title or comment of the functionblock</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>The ID of the element block</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="CompositionName">
+                <xs:annotation>
+                    <xs:documentation>The name of the element block</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Items"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+
+    </xs:element>
+
+    <xs:complexType name="AttributeListMultilingualTextItem_T">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+        <xs:choice minOccurs="2" maxOccurs="2">
+            <xs:element ref="Culture" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="Text" minOccurs="1" maxOccurs="1"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:element name="Culture" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Text" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>The title or comment of the functionblock</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+
+
+
+
+
+</xs:schema>

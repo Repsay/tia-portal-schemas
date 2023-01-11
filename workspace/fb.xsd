@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:common="common"
     xmlns:enums="enums"
     xmlns:patterns="patterns">
 
     <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
     <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+    <xs:include schemaLocation="./_common.xsd"/>
 
     <xs:include schemaLocation="./fbattribute.xsd"/>
     <xs:include schemaLocation="./fbobject.xsd"/>
@@ -41,7 +43,7 @@
             <xs:element ref="Number" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="ParameterModified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="PLCSimAdvancedSupport" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="ProgrammingLanguage" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="ProgrammingLanguage" type="enums:ProgrammingLanguage" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="SecondaryType" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="StructureModified" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="AssignedProDiagFB" minOccurs="0" maxOccurs="1"/>
