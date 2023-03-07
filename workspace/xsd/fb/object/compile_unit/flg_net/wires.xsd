@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns = "http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3" targetNamespace="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="../../../../enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="../../../../patterns.xsd" namespace="patterns" />
+
+    <xs:include schemaLocation="./wires/wire.xsd"/>
+
+
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a multilanguage text.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="Wire">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="Powerrail">
+                    <xs:annotation>
+                        <xs:documentation>Powerrail represents a single powerrail.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="NameCon">
+                    <xs:annotation>
+                        <xs:documentation>NameCon represents a single name connection.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="IdentCon">
+                    <xs:annotation>
+                        <xs:documentation>IdentCon represents a single identifier connection.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="Openbranch">
+                    <xs:annotation>
+                        <xs:documentation>Openbranch represents a single open branch.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="OpenCon">
+                    <xs:annotation>
+                        <xs:documentation>OpenCon represents a single open connection.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:attribute name="UId" type="xs:int" use="required"/>
+
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>

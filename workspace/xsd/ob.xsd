@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:common="common"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+    <xs:include schemaLocation="./common.xsd"/>
+
+    <xs:include schemaLocation="./fb/attribute.xsd"/>
+    <xs:include schemaLocation="./fb/object.xsd"/>
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a organization block.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType name="AttributeListOB_T">
+        <xs:annotation>
+            <xs:documentation>
+            Type of the element that contains the attributes of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <!-- Attributes for all blocks -->
+            <xs:element ref="AutoNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CodeModifiedDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CompileDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CreationDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderAuthor" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderFamily" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderName" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderVersion" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="Interface" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="InterfaceModifiedDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="IsConsistent" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="IsKnowHowProtected" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="IsWriteProtected" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="MemoryLayout" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ModifiedDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Name" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Number" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ParameterModified" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="PLCSimAdvancedSupport" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="ProgrammingLanguage" type="enums:ProgrammingLanguage" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="StructureModified" minOccurs="0" maxOccurs="1"/>
+            <!-- End of attributes for all blocks -->
+            <!-- Attributes for organization blocks -->
+            <xs:element ref="ApplicationCycle" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="AutomaticMinimum" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ConstantName" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CycleTimeDistributedIO" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CyclicApplicationCycleTime" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CyclicTime" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DataExchangeMode" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DelayTime" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DistributedIOName" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DistributedIONumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="EnableTimeError" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="EventClass" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="EventsToBeQueued" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="EventThresholdForTimeError" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Execution" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Factor" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="PhaseOffset" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="PriorityNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ProcessImagePartNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ReportEvents" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="SecondaryType" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="StartDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="SynchronousApplicationCycleTime" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="TimeMode" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="TimeOfDay" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="TransformationDBNumber" minOccurs="0" maxOccurs="1"/>
+            <!-- End of attributes for organization blocks -->
+            <!-- attributes for fb, fc and ob -->
+            <xs:element ref="HandleErrorsWithinBlock" minOccurs="0" maxOccurs="1"/>
+            <!-- End of attributes for fb, fc and ob -->
+            <!-- Attributes for GRAPH blocks -->
+            <xs:element ref="AcknowledgeErrorsRequired" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CreateMinimizedDB" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ExtensionBlockName" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="GraphVersion" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="InitialValuesAcquisition" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="LanguageInNetworks" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="LockOperatingMode" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="PermanentILProcessingInMANMode" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="SkipSteps" minOccurs="0" maxOccurs="1"/>
+            <!-- End of attributes for GRAPH blocks -->
+            <!-- Attributes for SCL blocks -->
+            <xs:element ref="CheckArrayLimits" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ExtendedStatus" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DBAccessibleFromOPCUA" minOccurs="0" maxOccurs="1"/>
+            <!-- End of attributes for SCL blocks -->
+            <!-- Attributes for GRAPH, SCL and LAD/FBD blocks -->
+            <xs:element ref="SetENOAutomatically" minOccurs="0" maxOccurs="1"/>
+            <!-- End of attributes for GRAPH, SCL and LAD/FBD blocks -->
+        </xs:choice>
+
+    </xs:complexType>
+
+    <xs:complexType name="ObjectListOB_T">
+        <xs:annotation>
+            <xs:documentation>
+                Function block object list.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element ref="MultilingualText" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                    <xs:documentation>Function block object list.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="SW.Blocks.CompileUnit" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Function block object list.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+
+</xs:schema>

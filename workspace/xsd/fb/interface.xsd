@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="../enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="../patterns.xsd" namespace="patterns" />
+
+    <xs:include schemaLocation="./interface/sections.xsd"/>
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a function block interface.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="Sections">
+        <xs:annotation>
+            <xs:documentation>
+                Sections represents the sections of the function block interface.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:annotation>
+                <xs:documentation>
+                    Type of the element that contains the sections of the function block interface.
+                </xs:documentation>
+            </xs:annotation>
+            <xs:sequence>
+                <xs:element name="AttributeList" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="Section" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Section represents a section of the function block interface.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Datatype" type="enums:SimaticType"/>
+            <xs:attribute name="Version" type="xs:string" use="optional"/>
+
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="InterfaceFB_T">
+        <xs:sequence>
+            <xs:element ref="Sections"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

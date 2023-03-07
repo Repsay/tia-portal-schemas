@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns = "http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3" targetNamespace="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="../../../../../../enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="../../../../../../patterns.xsd" namespace="patterns" />
+
+    <xs:include schemaLocation="../common.xsd"/>
+    <xs:include schemaLocation="../access.xsd"/>
+
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a multilanguage text.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="Instance">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:choice>
+                    <xs:element ref="Component"/>
+                    <xs:element ref="AbsoluteOffset"/>
+                    <xs:element ref="Address"/>
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                    <xs:element name="Comment"/>
+                    <xs:element name="Blank"/>
+                    <xs:element name="NewLine"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="UId" type="xs:int"/>
+            <xs:attribute name="Scope" type="enums:Scope" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="NamelessParameter">
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="Access"/>
+                    <xs:choice minOccurs="0">
+                        <xs:element ref="Comment"/>
+                        <xs:element ref="Blank"/>
+                        <xs:element ref="NewLine"/>
+                    </xs:choice>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="UId" type="xs:int"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Parameter">
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="Access"/>
+                    <xs:choice minOccurs="0">
+                        <xs:element ref="Comment"/>
+                        <xs:element ref="Blank"/>
+                        <xs:element ref="NewLine"/>
+                    </xs:choice>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required"/>
+            <xs:attribute name="Section" type="enums:SectionName" use="optional"/>
+            <xs:attribute name="Type" type="xs:string"/>
+            <xs:attribute name="TemplateReference" type="xs:string"/>
+            <xs:attribute name="Informative" type="xs:boolean" default="false"/>
+            <xs:attribute name="UId" type="xs:int"/>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns = "http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3" targetNamespace="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="../../../../../enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="../../../../../patterns.xsd" namespace="patterns" />
+
+    <xs:include schemaLocation="../parts.xsd"/>
+    <xs:include schemaLocation="./comment.xsd"/>
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a multilanguage text.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="Comment">
+        <xs:annotation>
+            <xs:documentation>Comment represents a single comment.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="MultiLanguageText" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>MultiLanguageText represents a single multi language text.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Insterted" type="xs:boolean" use="optional" default="false">
+                <xs:annotation>
+                    <xs:documentation>Denotes if the comment is at the end of the line (using //) or inside the line (using /* */)</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Informative" type="xs:boolean" use="optional" default="false">
+                <xs:annotation>
+                    <xs:documentation>Exported only with ReadOnly options, ignored during import</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="UId" type="xs:int" use="optional">
+                <xs:annotation>
+                    <xs:documentation>Unique identifier of the comment.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Blank">
+        <xs:complexType>
+            <xs:attribute name="Num" type="xs:positiveInteger" use="optional" default="1"/>
+            <xs:attribute name="UId" type="xs:int" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="NewLine">
+        <xs:complexType>
+            <xs:attribute name="Num" type="xs:positiveInteger" use="optional" default="1"/>
+            <xs:attribute name="UId" type="xs:int" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="TemplateValue">
+        <xs:annotation>
+            <xs:documentation>TemplateValue represents a single template value.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="Name" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Name of the template value.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Type" type="enums:TemplateType" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Type of the template value.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="UId" type="xs:int" use="optional">
+                        <xs:annotation>
+                            <xs:documentation>Unique identifier of the template value.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AutomaticTyped">
+        <xs:complexType>
+            <xs:attribute name="Name" type="xs:string" use="optional">
+                <xs:annotation>
+                    <xs:documentation>The name of the automatic chosen template parameter. Not for InstructionRef</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Invisible">
+        <xs:annotation>
+            <xs:documentation>The invisible pins of this part</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="Name" type="xs:string" use="optional">
+                <xs:annotation>
+                    <xs:documentation>The name of the invisible pin</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+
+    </xs:element>
+
+    <xs:element name="Negated">
+        <xs:annotation>
+            <xs:documentation>The negated pins of this part</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="Name" type="xs:string" use="optional">
+                <xs:annotation>
+                    <xs:documentation>The name of the negated pin</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Component">
+        <xs:annotation>
+            <xs:documentation>
+                Component represents a single component.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="Access"/>
+            </xs:choice>
+            <xs:attribute name="UId" type="xs:int" use="optional"/>
+            <xs:attribute name="Name" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>Name represents the name of the component.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="SliceAccessModifier" type="patterns:SliceAccessModifier" default="undef"/>
+            <xs:attribute name="SimpleAccessModifier" type="patterns:SimpleAccessModifier" default="None"/>
+            <xs:attribute name="AccessModifier" type="enums:AccessModifier" default="None">
+                <xs:annotation>
+                    <xs:documentation>If component has child AccessModifier is Array else AccessModifier is None</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+
+    </xs:element>
+
+    <xs:element name="AbsoluteOffset">
+        <xs:complexType>
+            <xs:attribute name="BitOffset" type="xs:int" use="required">
+                <xs:annotation>
+                    <xs:documentation>Byte * 8 + Bit</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Type" type="xs:string" use="required"/>
+        </xs:complexType>
+
+    </xs:element>
+
+
+
+
+</xs:schema>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:common="common"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="./enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="./patterns.xsd" namespace="patterns" />
+    <xs:include schemaLocation="./common.xsd"/>
+
+    <xs:include schemaLocation="./fb/attribute.xsd"/>
+    <xs:include schemaLocation="./fb/object.xsd"/>
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a organization block.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType name="AttributeListDB_T">
+        <xs:annotation>
+            <xs:documentation>
+            Type of the element that contains the attributes of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <!-- Attributes for all blocks -->
+            <xs:element ref="AutoNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CodeModifiedDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CompileDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="CreationDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderAuthor" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderFamily" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderName" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HeaderVersion" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="Interface" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="InterfaceModifiedDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="IsConsistent" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="IsKnowHowProtected" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="IsWriteProtected" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="MemoryLayout" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ModifiedDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Name" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="Number" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="ParameterModified" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="PLCSimAdvancedSupport" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="ProgrammingLanguage" type="enums:ProgrammingLanguage" minOccurs="1" maxOccurs="1" fixed="DB"/>
+            <xs:element ref="StructureModified" minOccurs="0" maxOccurs="1"/>
+            <!-- End of attributes for all blocks -->
+        </xs:choice>
+
+    </xs:complexType>
+
+    <xs:complexType name="ObjectListDB_T">
+        <xs:annotation>
+            <xs:documentation>
+                Function block object list.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element ref="MultilingualText" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                    <xs:documentation>Function block object list.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="SW.Blocks.CompileUnit" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Function block object list.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+
+</xs:schema>

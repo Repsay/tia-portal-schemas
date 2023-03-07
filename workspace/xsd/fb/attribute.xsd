@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:interface="http://www.siemens.com/automation/Openness/SW/Interface/v3"
+    xmlns:enums="enums"
+    xmlns:patterns="patterns">
+
+    <xs:import schemaLocation="../enums.xsd" namespace="enums"/>
+    <xs:import schemaLocation="../patterns.xsd" namespace="patterns" />
+
+    <xs:import namespace="http://www.siemens.com/automation/Openness/SW/Interface/v3" schemaLocation="./interface.xsd"/>
+
+    <xs:annotation>
+        <xs:documentation>
+            Schema for a function block.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="AutoNumber" type="xs:boolean" default="true">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is an auto-numbered function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="CodeModifiedDate" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                        Time when the function block was last modified.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="CompileDate" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                        Time when the function block was compiled.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="CreationDate" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                        Time when the function block was created.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="HeaderAuthor" type="xs:string" default="">
+        <xs:annotation>
+            <xs:documentation>
+                        Author of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="HeaderFamily" type="xs:string" default="">
+        <xs:annotation>
+            <xs:documentation>
+                        Family of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="HeaderName" type="xs:string" default="">
+        <xs:annotation>
+            <xs:documentation>
+                        Name of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="HeaderVersion" type="xs:string" default="0.1">
+        <xs:annotation>
+            <xs:documentation>Version of the function block.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Interface" type="interface:InterfaceFB_T">
+        <xs:annotation>
+            <xs:documentation>
+                        Contains the interface of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="InterfaceModifiedDate" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                        Time when the interface of the function block was last modified.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="IsConsistent" type="xs:boolean" default="true">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is consistent.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="IsKnowHowProtected" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is know-how protected.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="IsWriteProtected" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is write protected.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="MemoryLayout" type="enums:MemoryLayout">
+        <xs:annotation>
+            <xs:documentation>
+                        Contains the memory layout of the function block.
+            </xs:documentation>
+        </xs:annotation>
+
+    </xs:element>
+    <xs:element name="ModifiedDate" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                        Time when the function block was last modified.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Name of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Number" type="xs:int">
+        <xs:annotation>
+            <xs:documentation>
+                        Number of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ParameterModified" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                        Time when the parameters of the function block were last modified.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PLCSimAdvancedSupport" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports advanced simulation in PLC Sim.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="StructureModified" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                        Time when the structure of the function block was last modified.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="IsOnlyStoredInLoadMemory" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is only stored in load memory.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="IsPLCDB" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is a PLC DB.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="IsWriteProtectedInAS" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is write protected in AS.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="AssignedProDiagFB" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        ProDiag function block assigned to the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ISMultiInstanceCapable" type="xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is multi-instance capable.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Supervisions" type="xs:string" default="no supervisions">
+        <xs:annotation>
+            <xs:documentation>
+                        Supervisions of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="IsIECCheckEnabled" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is IECCheck enabled.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="IsRetainMemResEnabled" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block is retain memory resource enabled.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="MemoryReserve" type="xs:int" default="0">
+        <xs:annotation>
+            <xs:documentation>
+                        Memory reserve of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="RetainMemoryReserve" type="xs:int" default="0">
+        <xs:annotation>
+            <xs:documentation>
+                        Retain memory reserve of the function block. If the "IsRetainMemResEnabled" attribute's value is "false", and the "RetainMemoryReserve" attribute is not equal to "0", an exception is thrown.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DownloadWithoutReinit" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block can be downloaded without reinitialization.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="LibraryType" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Library type of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="LibraryTypeVersionGuid" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Library type version GUID of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ParameterPassing" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports parameter passing.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="UDABlockProperties" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                            UDABlockProperties of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="UDAEnableTagReadback" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                            Indicates whether the function block supports UDAEnableTagReadback.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="InstanceOfName" type="xs:string" default="">
+        <xs:annotation>
+            <xs:documentation>
+                        Name of which instance the data block is.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="InstanceOfNumber" type="xs:int">
+        <xs:annotation>
+            <xs:documentation>
+                        Number of which instance the data block is.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="InstanceOfType" type="enums:BlockType">
+        <xs:annotation>
+            <xs:documentation>
+                        Type of which instance the data block is.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="OfSystemLibElement" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Name of the system library element the data block is of.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="OfSystemLibVersion" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Version of the system library element the data block is of.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ApplicationCycle" type="xs:double">
+        <xs:annotation>
+            <xs:documentation>
+                        Application cycle time of the organzation block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="AutomaticMinimum" type="xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the minimum time is automatically calculated.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ConstantName" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Name of the constant.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="CycleTimeDistributedIO" type="xs:double">
+        <xs:annotation>
+            <xs:documentation>
+                        Cycle time of the distributed I/O.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="CyclicApplicationCycleTime" type="xs:double">
+        <xs:annotation>
+            <xs:documentation>
+                        Cyclic application cycle time of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="CyclicTime" type="xs:int">
+        <xs:annotation>
+            <xs:documentation>
+                        Cyclic time of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DataExchangeMode" type="enums:OBDataExchangeMode">
+        <xs:annotation>
+            <xs:documentation>
+                        Data exchange mode of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DelayTime" type="xs:double">
+        <xs:annotation>
+            <xs:documentation>
+                        Delay time of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DistributedIOName" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Name of the distributed I/O.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DistributedIONumber" type="xs:int">
+        <xs:annotation>
+            <xs:documentation>
+                        Number of the distributed I/O.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="EnableTimeError" type="xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the time error is enabled.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="EventClass" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Event class of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="EventsToBeQueued" type="xs:int">
+        <xs:annotation>
+            <xs:documentation>
+                        Number of events to be queued.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="EventThresholdForTimeError" type="xs:int">
+        <xs:annotation>
+            <xs:documentation>
+                        Event threshold for time error.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Execution" type="enums:OBExecution">
+        <xs:annotation>
+            <xs:documentation>
+                        Execution of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Factor" type="xs:double">
+        <xs:annotation>
+            <xs:documentation>
+                        Factor of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PhaseOffset" type="xs:int">
+        <xs:annotation>
+            <xs:documentation>
+                        Phase offset of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PriorityNumber" type="xs:int">
+        <xs:annotation>
+            <xs:documentation>
+                        Priority number of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ProcessImagePartNumber" type="xs:unsignedInt">
+        <xs:annotation>
+            <xs:documentation>
+                        Number of the process image part.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ReportEvents" type="xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether events are reported.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="SecondaryType" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Secondary type of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="StartDate" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                        Start date of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="SynchronousApplicationCycleTime" type="xs:double">
+        <xs:annotation>
+            <xs:documentation>
+                        Synchronous application cycle time of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="TimeMode" type="enums:OBTimeMode">
+        <xs:annotation>
+            <xs:documentation>
+                        Time mode of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="TimeOfDay" type="xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                        Time of day of the organization block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="TransformationDBNumber" type="xs:unsignedInt">
+        <xs:annotation>
+            <xs:documentation>
+                        Number of the transformation database.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="HandleErrorsWithinBlock" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports HandleErrorsWithinBlock.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="LibraryConformanceStatus" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Library conformance status of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="AcknowledgeErrorsRequired" type="xs:boolean" default="true">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports AcknowledgeErrorsRequired.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="CreateMinimizedDB" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports CreateMinimizedDB.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ExtensionBlockName" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Name of the extension block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="GraphVersion" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Version of the graph.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="InitialValuesAcquisition" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Initial values acquisition of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="LanguageInNetworks" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                        Language in networks of the function block.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="LockOperatingMode" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports LockOperatingMode.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PermanentILProcessingInMANMode" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports PermanentILProcessingInMANMode.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="SkipSteps" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports SkipSteps.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="WithAlarmHandling" type="xs:boolean" default="true">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports WithAlarmHandling.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="CheckArrayLimits" type="xs:boolean" default="true">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports CheckArrayLimits.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ExtendedStatus" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports ExtendedStatus.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DBAccessibleFromOPCUA" type="xs:boolean" default="false">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports DBAccessibleFromOPCUA.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="SetENOAutomatically" type="xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                        Indicates whether the function block supports SetENOAutomatically.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+
+</xs:schema>
