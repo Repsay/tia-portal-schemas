@@ -8,9 +8,8 @@
     <xs:import schemaLocation="../patterns.xsd" namespace="patterns" />
     <xs:include schemaLocation="../common.xsd"/>
 
-    <xs:include schemaLocation="./object/compile_unit.xsd"/>
     <xs:include schemaLocation="../multilingualtext.xsd"/>
-
+    <xs:include schemaLocation="./object/compile_unit.xsd"/>
 
     <xs:annotation>
         <xs:documentation>

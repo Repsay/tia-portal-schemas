@@ -14,13 +14,13 @@
     <schema file-location="../../../patterns.xsd" docfile-location="../../../patterns.html"/>
     <schema file-location="../../common.xsd" docfile-location="../../common.html"/>
     <schema file-location="../../enums.xsd" docfile-location="../../enums.html"/>
-    <schema file-location="../../multiligualtext.xsd" docfile-location="../../multiligualtext.html"/>
+    <schema file-location="../../multilingualtext.xsd" docfile-location="../../multilingualtext.html"/>
     <schema file-location="../../patterns.xsd" docfile-location="../../patterns.html"/>
     <schema file-location="../access.xsd" docfile-location="../access.html"/>
     <schema file-location="../common.xsd" docfile-location="../common.html"/>
     <schema file-location="../enums.xsd" docfile-location="../enums.html"/>
     <schema file-location="../interface.xsd" docfile-location="../interface.html"/>
-    <schema file-location="../multiligualtext.xsd" docfile-location="../multiligualtext.html"/>
+    <schema file-location="../multilingualtext.xsd" docfile-location="../multilingualtext.html"/>
     <schema file-location="../parts.xsd" docfile-location="../parts.html"/>
     <schema file-location="../patterns.xsd" docfile-location="../patterns.html"/>
     <schema file-location="./access/constant.xsd" docfile-location="./access/constant.html"/>
@@ -38,6 +38,7 @@
     <schema file-location="./fb.xsd" docfile-location="./fb.html"/>
     <schema file-location="./fb/attribute.xsd" docfile-location="./fb/attribute.html"/>
     <schema file-location="./fb/interface.xsd" docfile-location="./fb/interface.html"/>
+    <schema file-location="./fb/object.xsd" docfile-location="./fb/object.html"/>
     <schema file-location="./flg_net.xsd" docfile-location="./flg_net.html"/>
     <schema file-location="./flg_net/labels.xsd" docfile-location="./flg_net/labels.html"/>
     <schema file-location="./flg_net/parts.xsd" docfile-location="./flg_net/parts.html"/>
@@ -48,7 +49,7 @@
     <schema file-location="./interface/section.xsd" docfile-location="./interface/section.html"/>
     <schema file-location="./interface/sections.xsd" docfile-location="./interface/sections.html"/>
     <schema file-location="./member/comment.xsd" docfile-location="./member/comment.html"/>
-    <schema file-location="./multiligualtext.xsd" docfile-location="./multiligualtext.html"/>
+    <schema file-location="./multilingualtext.xsd" docfile-location="./multilingualtext.html"/>
     <schema file-location="./network_source.xsd" docfile-location="./network_source.html"/>
     <schema file-location="./ob.xsd" docfile-location="./ob.html"/>
     <schema file-location="./object.xsd" docfile-location="./fb/object.html"/>
